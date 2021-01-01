@@ -65,3 +65,12 @@ class BlockWorld:
         r, c = np.where(self.board == 'S')
         r, c = r[0], c[0]
         return r, c
+
+    def initialize_q_values(self):
+        self.q_values = {}
+        for row in range(self.N):
+            for col in range(self.M):
+                self.q_values[str((row, col))] = {}
+                actions = self.get_actions(row, col)
+                for action in actions:
+                    self.q_values[str((row, col))][action] = 0
