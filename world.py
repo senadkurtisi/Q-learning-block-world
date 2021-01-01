@@ -16,11 +16,20 @@ class BlockWorld:
         self.main_p = main_p
         self.other_p = (1-self.main_p)/2
 
+        self.rewards = {'terminal': {'P': 1, 'N': -1},
+                        'step': -0.04}
+
     def get_actions(self, row, col):
         if self.is_terminal(row, col):
             return ['END']
         else:
             return ['north', 'south', 'east', 'west']
+
+    def get_reward(self, row, col):
+        if self.is_terminal(row, col):
+            return self.rewards['terminal'][self.board[row, col]], True
+        else:
+            return self.rewards['step'], False
 
     def is_terminal(self, row, col):
         return self.board[row, col] in ['P', 'N']
@@ -30,9 +39,9 @@ class BlockWorld:
         if p <= self.main_p:
             return row + self.step_row[action], col + self.step_col[action]
         elif p <= (self.main_p + self.other_p):
-            return row + self.step_row[self.p_actions[action][0]], col + self.step_col[self.p_actions[action][0]]
+            return self.try_perform(row, col, self.p_actions[action][0])
         else:
-            return row + self.step_row[self.p_actions[action][1]], col + self.step_col[self.p_actions[action][1]]
+            return self.try_perform(row, col, self.p_actions[action][1])
 
     def try_perform(self, row, col, action=None):
         assert action is not None, "No action selected!"
