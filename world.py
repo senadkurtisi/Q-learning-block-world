@@ -17,10 +17,13 @@ class BlockWorld:
         self.other_p = (1-self.main_p)/2
 
     def get_actions(self, row, col):
-        if self.board[row, col] in ['S', 'T']:
+        if self.is_terminal(row, col):
             return ['END']
         else:
             return ['north', 'south', 'east', 'west']
+
+    def is_terminal(self, row, col):
+        return self.board[row, col] in ['P', 'N']
 
     def execute_stochastic(self, row, col, action):
         p = np.random.uniform()
