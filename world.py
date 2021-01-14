@@ -7,15 +7,19 @@ class BlockWorld:
         self.num_states = 11
         self.N, self.M = self.board.shape
 
+        # Updates performed to the agent position when actions are performed
         self.step_row = {'north': -1, 'south': 1, 'east': 0, 'west': 0}
         self.step_col = {'north': 0, 'south': 0, 'east': +1, 'west': -1}
 
+        # Set of actions which happen when agent slips
         self.p_actions = {'north': ['east', 'west'],
                           'south': ['east', 'west'],
                           'east': ['north', 'south'],
                           'west': ['north', 'south'],
                           'END': []}
+
         self.main_p = main_p
+        # Probability that the agent will slip
         self.other_p = (1-self.main_p)/2
 
         self.rewards = {'terminal': {'P': 1, 'N': -1},
@@ -24,6 +28,9 @@ class BlockWorld:
         self.initialize_q_values()
 
     def get_actions(self, row, col):
+        """ Returns actions that can be performed in the
+            specified state.
+        """
         if self.is_terminal(row, col):
             return ['END']
         else:
@@ -34,6 +41,7 @@ class BlockWorld:
         return max(self.q_values[dict_key_pos], key=self.q_values[dict_key_pos].get)
 
     def get_reward(self, row, col):
+        """ Take the current state reward. """
         if self.is_terminal(row, col):
             return self.rewards['terminal'][self.board[row, col]], True
         else:
@@ -42,7 +50,12 @@ class BlockWorld:
     def is_terminal(self, row, col):
         return self.board[row, col] in ['P', 'N']
 
-    def try_perform(self, row, col, action):
+    def try_perform(self, row, col, action=None):
+        """ Agents executes the desired action from the
+            current position: (row, col), or slips.
+        """
+        assert action is not None, "No action selected!"
+        
         p = np.random.uniform()
         if p <= self.main_p:
             return self.execute(row, col, action)
@@ -51,7 +64,8 @@ class BlockWorld:
         else:
             return self.execute(row, col, self.p_actions[action][1])
 
-    def execute(self, row, col, action=None, stochastic=True):
+    def execute(self, row, col, action=None):
+        """ Agent deterministically performs an action. """
         assert action is not None, "No action selected!"
 
         if action == 'north':
