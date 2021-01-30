@@ -55,5 +55,6 @@ The algorithm converges after 17 iterations.
 #### Discount factor=1.0
 In this case the algorithm converges after 24 iterations. <br/>
 Besides the V-values being higher than in the previous case (which was expected), we can notice some differences when it comes to optimal actions in the bottom row. This is because we are giving much more significance to the negative one-step-award: -0.04. 
+
 <img src="imgs/block_slip_02_discount_10.png"/>
 <br/>
