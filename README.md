@@ -6,7 +6,7 @@ This is the implementation of the Reinforcement Learning homework for the Machin
 ## Block World environment
 The environment originates from the book by [Russel & Norvig](http://aima.cs.berkeley.edu/). 
 
-<img src="imgs/block_world.png"/>
+<img src="imgs/block_wrld.png"/>
 
 Green and red fields are terminal states. Green field represents victory and it's reward is **+1**, while the red one represents defeat and it's reward is **-1**. <br/>
 For each move the agent performs, it receives a small reward of: **-0.04**. The black field represents a wall. If the agent tries to go into that field or outside of the borders of the world it will remain in the same position/field.
@@ -23,6 +23,7 @@ In this case agent goes to the target direction with probability of 0.8, but goe
 The algorithm converges after 17 iterations. <br/>
 <br/>
 Bellow we can see how optimal actions change for each field during iterations.
+
 <br/>
 <img src="imgs/table_slip_02_discount_09.png"/>
 <br/>
