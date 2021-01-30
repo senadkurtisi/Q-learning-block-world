@@ -76,7 +76,7 @@ Below we can see what are the optimal actions and according V-values for each st
 At the start of each episode we decay the learning rate with respect to the equation below. <br/>
 ***t*** indicates the episode number
 
-<img src="imgs/equation.png"/>
+<img src="imgs/equation.png" width="415" height="92"/>
 
 
 #### Constant learning rate
