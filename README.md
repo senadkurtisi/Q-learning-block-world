@@ -84,6 +84,6 @@ If we use constant learning rate the algorithm does not converge nicely. Also th
 * α = 0.1 --- Chosen randomly
 * α = 0.0125 --- Learning rate which we would get after 100 episodes using the equation above.
 
-<img src="imgs/q_learning_decay_constant.png.png"/>
+<img src="imgs/q_learning_decay_constant.png"/>
 
 It is confirmed that the smaller values result in nicer convergence, but this is not ultimately correct. In another words we need to progressively redice the learning rate.
