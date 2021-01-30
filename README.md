@@ -25,7 +25,6 @@ In this case agent goes to the target direction with probability of 0.8, but goe
 The algorithm converges after 17 iterations. <br/>
 <br/>
 Below we can see how optimal actions change for each field during iterations.
-
 <br/>
 <img src="imgs/table_slip_02_discount_09.png"/>
 <br/>
