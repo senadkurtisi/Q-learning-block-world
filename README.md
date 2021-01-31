@@ -1,7 +1,7 @@
 # Q-learning & Q-value iteration algorithms for the Block World Environment
 
 ## Motivation
-This is the implementation of the Reinforcement Learning homework for the Machine Learning class at the School of Electrical Engineering, University of Belgrade.
+This is the implementation of the Reinforcement Learning homework for the Machine Learning class.
 
 ## Block World environment
 The environment originates from the book by [Russel & Norvig](http://aima.cs.berkeley.edu/). 
