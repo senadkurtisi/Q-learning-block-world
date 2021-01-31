@@ -15,7 +15,7 @@ For each move the agent performs, it receives a small reward of: **-0.04**. The 
 It is important to note that this algorithm assumes that we are familiar with the [***Markov Decision Process***](https://en.wikipedia.org/wiki/Markov_decision_process).
 
 ### Slip probability
-When the agent decides to perform a certain action there is some probability that the agent will slip an end up in some other state. More specifically, when agent slips it can end up going in one of the directions which are orthogonal to the target one. Example: Agent wants to go to the ease, but can end up going to the north or south.
+When the agent decides to perform a certain action there is some probability that the agent will slip an end up in some other state. More specifically, when agent slips it can end up going in one of the directions which are orthogonal to the target one. Example: Agent wants to go to the east, but can end up going to the north or south.
 <br/>
 Below you can see some analysis related to this subject. In this analysis a discount factor of 0.9 was used.
 
@@ -34,7 +34,7 @@ Here we can see what are the optimal actions after the algorithm has converged a
 <img src="imgs/block_slip_02_discount_09.png"/>
 
 #### Slip probability=0.6
-In this case agent goes to the target direction with probability of 0.4, but goes in orthogonal directions with probability 0.6 (0.3 each).
+In this case agent goes to the target direction with probability of 0.4, but goes in orthogonal directions with probability 0.6 (0.3 each). Two arrows basically mean that for the both actions Q(s,a) value was the same and equal to the maximum.
 <br/>
 The algorithm converges after 34 iterations. <br/>
 <br/>
@@ -55,7 +55,7 @@ The algorithm converges after 17 iterations.
 
 #### Discount factor=1.0
 In this case the algorithm converges after 24 iterations. <br/>
-Besides the V-values being higher than in the previous case (which was expected), we can notice some differences when it comes to optimal actions in the bottom row. This is because we are giving much more significance to the negative one-step-award: -0.04. 
+Besides the V-values being higher than in the previous case (which was expected), we can notice some differences when it comes to optimal actions in the bottom row. 
 
 <img src="imgs/block_slip_02_discount_10.png"/>
 <br/>
@@ -66,7 +66,7 @@ Maybe the main difference of this algorithm with respect to the previous one, is
 ### Policy
 For deciding which actions the agent should perform, **ε-greedy** policy was used, with ε being set to **0.2**. That means that in 20% of the time our agent performs an action randomly, and in 80% of the time it chooses an optimal action in the current state: **s** based on the Q(s,a) pairs.
 
-Below we can see what are the optimal actions and according V-values for each state. These results were obtained by using adaptive learning rate (which is explained a bit alter).
+Below we can see what are the optimal actions and according V-values for each state. These results were obtained by using adaptive learning rate (which is explained a bit later).
 
 <img src="imgs/q_learning_epsilon_02.png"/>
 
@@ -86,4 +86,4 @@ If we use constant learning rate the algorithm does not converge nicely. Also th
 
 <img src="imgs/q_learning_decay_constant.png"/>
 
-It is confirmed that the smaller values result in nicer convergence, but this is not ultimately correct. In another words we need to progressively redice the learning rate.
+It is confirmed that the smaller values result in nicer convergence, but this is not ultimately correct. In another words we need to progressively reduce the learning rate.
